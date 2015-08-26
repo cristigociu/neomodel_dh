@@ -79,7 +79,8 @@ def _hydrated(data):
                 return Node(data)
             elif obj_type == 'relationship':
                 return Rel(data)
-        raise NotImplemented("Don't know how to inflate: " + repr(data))
+        #raise NotImplemented("Don't know how to inflate: " + repr(data)) #Fuck your fucking fuckery
+        return data
     elif neo4j.is_collection(data):
         return type(data)([_hydrated(datum) for datum in data])
     else:
